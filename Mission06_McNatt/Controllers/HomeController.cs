@@ -36,10 +36,21 @@ namespace Mission06_McNatt.Controllers
         [HttpPost]
         public IActionResult Form(Movie response)
         {
-            _context.Movies.Add(response); // Add record to the database
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _context.Movies.Add(response); // Add record to the database
+                _context.SaveChanges();
 
-            return View();
+                return View("Confirmation", response);
+            }
+            else
+            {
+                ViewBag.Categories = _context.Categories
+                    .OrderBy(x => x.CategoryName)
+                    .ToList();
+                return View(response);
+            }
+            
         }
 
         public IActionResult MovieCollection()

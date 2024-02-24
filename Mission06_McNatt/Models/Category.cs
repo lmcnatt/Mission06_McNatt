@@ -4,7 +4,7 @@ namespace Mission06_McNatt.Models
 {
     public class Category
     {
-        [Key] public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        [Key][Required] public int CategoryId { get; set; }
+        [Required] public string CategoryName { get; set; }
     }
 }
