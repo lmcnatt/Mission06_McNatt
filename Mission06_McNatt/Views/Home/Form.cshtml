@@ -4,6 +4,8 @@
 @model Movie;
 
 <form method="post">
+    <input type="hidden" asp-for="MovieId" />
+
     <div class="input-group">
         <label asp-for="CategoryId" class="input-group-text">Category</label>
         <select asp-for="CategoryId" class="form-select">

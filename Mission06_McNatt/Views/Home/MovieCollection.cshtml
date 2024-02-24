@@ -32,7 +32,27 @@
                 <td>@x.LentTo</td>
                 <td>@x.CopiedToPlex</td>
                 <td>@x.Notes</td>
+                <td><a class="btn btn-primary" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a></td>
+                <td>
+                    @* Delete button that leads to the confirmation function below, which uses the built in
+                       confirmation message box *@
+                    <form id="deleteMovie_@x.MovieId" action="@Url.Action("Delete", "Home", new { id=x.MovieId })" method="post">
+                        <button class="btn btn-danger" type="button" onclick="confirmDelete(@x.MovieId)">Delete</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
 </table>
+
+<script>
+    // Function to confirm the user wants to delete a movie
+    function confirmDelete(movieId) {
+        let confirmation = confirm("Are you sure you want to delete this movie?");
+        if (confirmation) {
+            document.getElementById("deleteMovie_" + movieId).submit();
+        } else {
+            // User clicked cancel, do nothing
+        }
+    }
+</script>
