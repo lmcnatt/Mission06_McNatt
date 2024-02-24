@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission06_McNatt.Models;
 using System.Diagnostics;
 
@@ -26,7 +27,10 @@ namespace Mission06_McNatt.Controllers
         [HttpGet]
         public IActionResult Form()
         {
-            return View();
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName).ToList();
+
+            return View(new Movie());
         }
 
         [HttpPost]
@@ -36,6 +40,15 @@ namespace Mission06_McNatt.Controllers
             _context.SaveChanges();
 
             return View();
+        }
+
+        public IActionResult MovieCollection()
+        {
+            var movies = _context.Movies
+                .Include("Category")
+                .OrderBy(x => x.Title).ToList();
+
+            return View(movies);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

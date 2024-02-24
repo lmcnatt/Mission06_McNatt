@@ -5,8 +5,14 @@
 
 <form method="post">
     <div class="input-group">
-        <label asp-for="Category" class="input-group-text">Category</label>
-        <input asp-for="Category" type="text" class="form-control" />
+        <label asp-for="CategoryId">Category</label>
+        <select class="form-select">
+            <option selected>Select a Category</option>
+            @foreach (Category c in ViewBag.Categories)
+            {
+                <option value="@c.CategoryId">@c.CategoryName</option>
+            }
+        </select>
     </div>
 
     <div class="input-group">
@@ -16,7 +22,7 @@
 
     <div class="input-group">
         <label asp-for="Year" class="input-group-text">Year</label>
-        <input asp-for="Year" type="text" class="form-control" />
+        <input asp-for="Year" type="number" class="form-control" />
     </div>
 
     <div class="input-group">
@@ -37,14 +43,22 @@
     <div class="input-group">
         <label asp-for="Edited" class="input-group-text">Edited</label>
         <select asp-for="Edited" class="form-select">
+            <option value="false" selected>No</option>
             <option value="true">Yes</option>
-            <option value="false">No</option>
         </select>
     </div>
 
     <div class="input-group">
         <label asp-for="LentTo" class="input-group-text">Lent To</label>
         <input asp-for="LentTo" type="text" class="form-control" />
+    </div>
+
+    <div class="input-group">
+        <label asp-for="CopiedToPlex">Copied to Plex?</label>
+        <select asp-for="CopiedToPlex">
+            <option value="true" selected>Yes</option>
+            <option value="false">No</option>
+        </select>
     </div>
 
     <div class="input-group">
