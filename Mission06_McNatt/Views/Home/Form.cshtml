@@ -19,11 +19,13 @@
     <div class="input-group">
         <label asp-for="Title" class="input-group-text">Title</label>
         <input asp-for="Title" type="text" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
     </div>
 
     <div class="input-group">
         <label asp-for="Year" class="input-group-text">Year</label>
         <input asp-for="Year" type="number" class="form-control" />
+        <span asp-validation-for="Year" class="text-danger"></span>
     </div>
 
     <div class="input-group">
@@ -50,9 +52,10 @@
     <div class="input-group">
         <label asp-for="Edited" class="input-group-text">Edited</label>
         <select asp-for="Edited" class="form-select">
-            <option value="false" selected>No</option>
+            <option value="false">No</option>
             <option value="true">Yes</option>
         </select>
+        <span asp-validation-for="Edited" class="text-danger"></span>
     </div>
 
     <div class="input-group">
@@ -63,9 +66,10 @@
     <div class="input-group">
         <label asp-for="CopiedToPlex" class="input-group-text">Copied to Plex?</label>
         <select asp-for="CopiedToPlex" class="form-select">
-            <option selected value="true">Yes</option>
+            <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
+        <span asp-validation-for="CopiedToPlex" class="text-danger"></span>
     </div>
 
     <div class="input-group">

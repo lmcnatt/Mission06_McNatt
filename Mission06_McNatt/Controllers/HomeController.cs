@@ -47,8 +47,7 @@ namespace Mission06_McNatt.Controllers
             else
             {
                 ViewBag.Categories = _context.Categories
-                    .OrderBy(x => x.CategoryName)
-                    .ToList();
+                    .OrderBy(x => x.CategoryName).ToList();
                 return View(response);
             }
             
